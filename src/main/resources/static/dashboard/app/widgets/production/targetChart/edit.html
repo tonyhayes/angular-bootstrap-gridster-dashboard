@@ -1,0 +1,42 @@
+<form role="form">
+    <div class="businessUnit" ng-if="businessUnitData">
+
+        <div class="form-group">
+            <label for="bu" class="col-sm-5 control-label">Business Unit</label>
+            <div class="col-sm-7">
+                <select required ng-model="config.bu" class="form-control dm-form" name="bu" ng-options="o for o in businessUnitData"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="area" class="col-sm-5 control-label">Area</label>
+            <div class="col-sm-7">
+                <select required ng-model="config.area" class="form-control dm-form" name="area" ng-options="o for o in areaData"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="supervisor" class="col-sm-5 control-label">Supervisor</label>
+            <div class="col-sm-7">
+                <select required ng-model="config.supervisor" class="form-control dm-form" name="supervisor" ng-options="o for o in supervisorData"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="foremen" class="col-sm-5 control-label">Foremen</label>
+            <div class="col-sm-7">
+                <select required ng-model="config.foremen" class="form-control dm-form" name="foremen" ng-options="o for o in foremenData"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="mso" class="col-sm-5 control-label">MSO</label>
+            <div class="col-sm-7">
+                <select required ng-model="config.mso" class="form-control dm-form" name="mso" ng-options="o for o in msoData"></select>
+            </div>
+        </div>
+
+        <button data-ng-click="clearFilter()" class="btn btn-default">Clear</button>
+
+
+
+
+
+    </div>
+</form>

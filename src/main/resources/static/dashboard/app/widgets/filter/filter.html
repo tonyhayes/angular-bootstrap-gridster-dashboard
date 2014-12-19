@@ -1,0 +1,62 @@
+<div class="text-center">
+
+    <ul class="breadcrumbs">
+        <span><a ng-click="traverseFilter('bu',filter.bu)">{{filter.bu}}</a></span>
+        <span><a ng-click="traverseFilter('area',filter.area)">{{filter.area}}</a></span>
+        <span><a ng-click="traverseFilter('supervisor',filter.supervisor)">{{filter.supervisor}}</a></span>
+        <span><a ng-click="traverseFilter('foremen',filter.foremen)">{{filter.foremen}}</a></span>
+        <span><a ng-click="traverseFilter('mso',filter.mso)">{{filter.mso}}</a></span>
+    </ul>
+
+    <div class="alert alert-info" ng-if="!businessUnitData">
+        Please insert a business unit in the widget configuration
+    </div>
+    <div class="businessUnit" ng-if="businessUnitData">
+
+        <div class="form-group">
+            <label for="bu" class="col-sm-5 control-label">Business Unit</label>
+            <div class="col-sm-7">
+                <select required ng-model="filter.bu" class="form-control dm-form" name="bu" ng-options="b for b in businessUnitData"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="area" class="col-sm-5 control-label">Area</label>
+            <div class="col-sm-7">
+                <select required ng-model="filter.area" class="form-control dm-form" name="area" ng-options="a for a in areaData"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="supervisor" class="col-sm-5 control-label">Supervisor</label>
+            <div class="col-sm-7">
+                <select required ng-model="filter.supervisor" class="form-control dm-form" name="supervisor" ng-options="s for s in supervisorData"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="foremen" class="col-sm-5 control-label">Foremen</label>
+            <div class="col-sm-7">
+                <select required ng-model="filter.foremen" class="form-control dm-form" name="foremen" ng-options="f for f in foremenData"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="mso" class="col-sm-5 control-label">MSO</label>
+            <div class="col-sm-7">
+                <select required ng-model="filter.mso" class="form-control dm-form" name="mso" ng-options="m for m in msoData"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="siteName" class="col-sm-5 control-label">Site</label>
+            <div class="col-sm-7">
+                <input  ng-model="filter.siteName" class="form-control dm-form" name="siteName" ng-disabled="true">
+            </div>
+        </div>
+
+        <button data-ng-click="clearFilter()" class="btn btn-default">Clear</button>
+
+
+
+
+    </div>
+
+
+
+</div>

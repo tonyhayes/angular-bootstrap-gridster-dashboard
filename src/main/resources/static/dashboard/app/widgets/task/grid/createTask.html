@@ -1,0 +1,65 @@
+    <h3>Create Task</h3>
+
+
+
+    <form class="form-horizontal" role="form" name="taskForm" ng-submit="submitForm()">
+        <div class="form-group"
+             ng-class="{ 'has-error' : taskForm.taskName.$invalid && !taskForm.taskName.$pristine }">
+            <label for="taskName" class="col-sm-5 control-label" placeholder="Not calculated">Task Name</label>
+            <div class="col-sm-7">
+                <input required="true" type="text" name="taskName" class="form-control dm-form revenue-input" ng-model="master.taskName">
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : taskForm.taskType.$invalid && !taskForm.taskType.$pristine }">
+            <label for="taskType" class="col-sm-5 control-label">Task Type</label>
+            <div class="col-sm-7">
+                <select required ng-model="master.taskType" class="form-control dm-form" name="taskType" ng-options="p.id as p.name for p in taskTypes" ></select>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : taskForm.taskLevel.$invalid && !taskForm.taskLevel.$pristine }">
+            <label for="taskLevel" class="col-sm-5 control-label">Task Level</label>
+            <div class="col-sm-7">
+                <select required ng-model="master.value" class="form-control dm-form" name="taskLevel" ng-options="p.value as p.text for p in tasklevels" ></select>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : taskForm.site.$invalid && !taskForm.site.$pristine }">
+            <label for="site" class="col-sm-5 control-label">Site</label>
+            <div class="col-sm-7">
+                <select required ng-model="master.site" class="form-control dm-form" name="site" ng-options=" p for p in sites" ></select>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : taskForm.mso.$invalid && !taskForm.mso.$pristine }">
+            <label for="mso" class="col-sm-5 control-label">MSO</label>
+            <div class="col-sm-7">
+                <select required ng-model="master.mso" class="form-control dm-form" name="mso" ng-options=" p for p in msos" ></select>
+            </div>
+        </div>
+        <div class="form-group"
+             ng-class="{ 'has-error' : taskForm.dueDate.$invalid && !taskForm.dueDate.$pristine }">
+            <label for="dueDate" class="col-sm-5 control-label">Due Date</label>
+            <div class="col-sm-7" >
+                <!--<quick-datepicker    icon-class='icon-calendar' label-format='EEEE, MMMM d, yyyy' required="true"-->
+                <!--name="dueDate" ng-model='record.master.dueDate' placeholder='Pick a Date'-->
+                <!--disable-timepicker='true'></quick-datepicker>-->
+                <input required="true" type="date" name="dueDate" class="form-control dm-form revenue-input" ng-model="master.dueDate">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="col-sm-5 control-label" >Description</label>
+            <div class="col-sm-7" >
+                <textarea name="description" class="form-control dm-form" ng-model="master.description" >
+                </textarea>
+            </div>
+        </div>
+</div>
+            <button type="button" class="btn" data-ng-click="toggleFlip()">Cancel</button>
+            <button ng-disabled="taskForm.$invalid" type="submit" class="btn btn-primary"
+                    data-ng-click="modalOptions.ok();">
+                Create Task
+            </button>
+</form>
+
+
+
+
+</div>

@@ -1,0 +1,44 @@
+    <div class="alert alert-info" ng-if="!tanksForSite">
+        No site information found
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <td class="table-xl truncate">
+            Tank
+        </td>
+        <td class="table-lg truncate">
+            Details
+        </td>
+
+        </thead>
+        <tr data-ng-repeat="tank in tanksForSite |orderBy:tankNum track by $index">
+            <td class="table-lg truncate">
+
+                <div width="215" ng-radial-gauge ranges="tank.ranges"
+                      value="tank.value" value-unit="tank.unit" precision="tank.precision"
+                      lower-limit="tank.lowerLimit" upper-limit="tank.upperLimit"></div>
+
+                {{tank.tankNum}} - {{tank.type}}
+
+            </td>
+            <td class="table-lg truncate">
+                <dl>
+                    <dt ng-cloak>{{tank.siteName}}:</dt>
+                    <dd ng-cloak>Type: {{tank.type}}</dd>
+                    <dd ng-cloak>SCADA:
+                        <i class="glyphicon" ng-class="{{tank.scada}} ? 'glyphicon-ok' : 'glyphicon-remove'"></i>
+                    </dd>
+                    <dd ng-cloak>Height: {{tank.height}}</dd>
+                    <dd ng-cloak>Capacity: {{tank.capacity}}</dd>
+                    <dd ng-cloak>Inventory: {{tank.inventory}}</dd>
+                    <dd ng-cloak>Remaining: {{tank.remaining}}</dd>
+                    <dd ng-cloak>Rate: {{tank.rate}}</dd>
+                    <dd ng-cloak>Expected Fill: {{tank.fillDate | date}}</dd>
+                </dl>
+
+
+            </td>
+        </tr>
+    </table>
+
