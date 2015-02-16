@@ -70,6 +70,9 @@ angular.module('dashboard')
 
                     // pass config to scope
                     $scope.config = config;
+                    if(!$scope.config.content){
+                        $scope.config.content = [];
+                    }
 
 
                     $scope.addNewItem = function() {
@@ -144,18 +147,40 @@ angular.module('dashboard')
                 };
 
                 // bind edit function
-                $scope.edit = function () {
-                    $scope.hidden = false;
-                    $scope.closeDialog = function () {
+                //$scope.edit = function () {
+                //    $scope.hidden = false;
+                //    $scope.closeDialog = function () {
+                //
+                //        $scope.hidden = true;
+                //        var widget = $scope.widget;
+                //        if (widget.edit && widget.edit.reload) {
+                //            // reload content after edit dialog is closed
+                //            $scope.$broadcast('widgetConfigChanged');
+                //        }
+                //    };
+                //};
 
-                        $scope.hidden = true;
+                $scope.edit = function() {
+                    var editScope = $scope.$new();
+
+                    var opts = {
+                        scope: editScope,
+                        templateUrl: adfTemplatePath + 'widget-edit.html'
+                    };
+
+                    var instance = $modal.open(opts);
+                    editScope.closeDialog = function() {
+                        instance.close();
+                        editScope.$destroy();
+
                         var widget = $scope.widget;
-                        if (widget.edit && widget.edit.reload) {
+                        if (widget.edit && widget.edit.reload){
                             // reload content after edit dialog is closed
                             $scope.$broadcast('widgetConfigChanged');
                         }
                     };
                 };
+
 
                 // bind maximize function
                 $scope.maximize = function() {
@@ -189,7 +214,6 @@ angular.module('dashboard')
             templateUrl: adfTemplatePath +'flip.html',
             scope: {
                 definition: '=',
-                col: '=column',
                 editMode: '@',
                 collapsible: '='
             },

@@ -107,6 +107,9 @@ angular.module('dashboardControllers', [])
                     // when evdrything has loaded, flip the switch, and let the
                     // routes do their work
                     $scope.loadingDone = true;
+
+
+
                 },
                 function (reason) {
                     // if any of the promises fails, handle it

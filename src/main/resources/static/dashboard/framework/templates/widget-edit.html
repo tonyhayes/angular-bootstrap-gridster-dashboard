@@ -24,7 +24,45 @@
     </div>
     <hr>
     <h5>Dynamic Dashboard</h5>
-    <form role="form">
+    <form role="form" name="_form" >
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group" ng-class="{error: _form.sizeX.$error && _form.submitted}">
+                    <label class="control-label col-lg-6 col-md-6">Width</label>
+                    <div class="col-lg-6 col-md-6">
+                        <input name="sizeX" ng-model="config.sizeX" class="form-control" placeholder="rows"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-lg-6 col-md-6">Height</label>
+                    <div class="col-lg-6 col-md-6">
+                        <input name="sizeY" ng-model="config.sizeY" class="form-control" placeholder="columns"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group" ng-class="{error: _form.sizeX.$error && _form.submitted}">
+                    <label class="control-label col-lg-6 col-md-6">Column</label>
+                    <div class="col-lg-6 col-md-6">
+                        <input name="col" ng-model="config.col" class="form-control" placeholder="col"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-lg-6 col-md-6">Row</label>
+                    <div class="col-lg-6 col-md-6">
+                        <input name="row" ng-model="config.row" class="form-control" placeholder="row"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
 
         <div class="form-group" ng-repeat="item in config.content  track by $index">
             <a class="btn-mini right" type="button" ng-click="deleteOption(item)"><span class="glyphicon glyphicon-trash"></span></a>

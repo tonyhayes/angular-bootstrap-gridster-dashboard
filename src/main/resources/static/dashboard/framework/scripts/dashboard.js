@@ -227,49 +227,6 @@ angular.module('dashboard')
     })
     .directive('adfDashboard', function ($rootScope, $log, $modal, dashboard, adfTemplatePath) {
 
-        function copyWidgets(source, target) {
-            if (source.widgets && source.widgets.length > 0) {
-                var w = source.widgets.shift();
-                while (w) {
-                    target.widgets.push(w);
-                    w = source.widgets.shift();
-                }
-            }
-        }
-
-        function fillStructure(model, columns, counter) {
-            angular.forEach(model.rows, function (row) {
-                angular.forEach(row.columns, function (column) {
-                    if (!column.widgets) {
-                        column.widgets = [];
-                    }
-                    if (columns[counter]) {
-                        copyWidgets(columns[counter], column);
-                        counter++;
-                    }
-                });
-            });
-            return counter;
-        }
-
-        function readColumns(model) {
-            var columns = [];
-            angular.forEach(model.rows, function (row) {
-                angular.forEach(row.columns, function (col) {
-                    columns.push(col);
-                });
-            });
-            return columns;
-        }
-
-        function changeStructure(model, structure) {
-            var columns = readColumns(model);
-            model.rows = structure.rows;
-            var counter = 0;
-            while (counter < columns.length) {
-                counter = fillStructure(model, columns, counter);
-            }
-        }
 
         function createConfiguration(type) {
             var cfg = {};
@@ -285,7 +242,6 @@ angular.module('dashboard')
             restrict: 'EA',
             transclude: false,
             scope: {
-                structure: '@',
                 name: '@',
                 admin: '@',
                 collapsible: '@',
@@ -293,16 +249,6 @@ angular.module('dashboard')
                 adfWidgetFilter: '='
             },
             controller: function ($scope) {
-                // sortable options for drag and drop
-                $scope.sortableOptions = {
-                    connectWith: ".column",
-                    handle: ".fa-arrows",
-                    cursor: 'move',
-                    tolerance: 'pointer',
-                    placeholder: 'placeholder',
-                    forcePlaceholderSize: true,
-                    opacity: 0.4
-                };
 
                 var model = {};
                 var structure = {};
@@ -310,25 +256,12 @@ angular.module('dashboard')
                 var structureName = {};
                 var name = $scope.name;
 
+
                 // Watching for changes on adfModel
                 $scope.$watch('adfModel', function(oldVal, newVal) {
                     if(newVal =! null) {
                         model = $scope.adfModel;
                         widgetFilter = $scope.adfWidgetFilter;
-                        if ( ! model || ! model.rows ){
-                            structureName = $scope.structure;
-                            structure = dashboard.structures[structureName];
-                            if (structure){
-                                if (model){
-                                    model.rows = angular.copy(structure).rows;
-                                } else {
-                                    model = angular.copy(structure);
-                                }
-                                model.structure = structureName;
-                            } else {
-                                $log.error( 'could not find structure ' + structureName);
-                            }
-                        }
 
                         if (model) {
                             if (!model.title){
@@ -343,11 +276,39 @@ angular.module('dashboard')
                                 $scope.popMode = true;
                             }
                             $scope.model = model;
+
+                            if(!$scope.model.dashboardMarginLeft){
+                                $scope.model.dashboardMarginLeft = 20;
+                            }
+                            if(!$scope.model.dashboardMarginRight){
+                                $scope.model.dashboardMarginRight = 20;
+                            }
+                            if(!$scope.model.dashboardColumns){
+                                $scope.model.dashboardColumns = 4;
+                            }
+                            if(!$scope.model.dashboardRows){
+                                $scope.model.dashboardRows = 6;
+                            }
+                            if(!$scope.model.dashboardRowHeight){
+                                $scope.model.dashboardRowHeight = 'match';
+                            }
+                            $scope.gridsterOptions = {
+                                margins: [$scope.model.dashboardMarginLeft, $scope.model.dashboardMarginRight],
+                                columns: $scope.model.dashboardColumns,
+                                rows: $scope.model.dashboardRows,
+                                rowHeight:$scope.model.dashboardRowHeight,
+                                draggable: {
+                                    handle: 'h3'
+                                }
+                            };
+
+
                         } else {
                             $log.error('could not find or create model');
                         }
                     }
                 }, true);
+
 
                 // edit mode
                 $scope.editMode = $scope.admin;
@@ -369,24 +330,6 @@ angular.module('dashboard')
                     $scope.editMode = false;
                     $scope.modelCopy = angular.copy($scope.modelCopy, $scope.adfModel);
                     $rootScope.$broadcast('adfDashboardEditComplete');
-                };
-
-                // edit dashboard settings
-                $scope.editDashboardDialog = function(){
-                    var editDashboardScope = $scope.$new();
-                    editDashboardScope.structures = dashboard.structures;
-                    var instance = $modal.open({
-                        scope: editDashboardScope,
-                        templateUrl: adfTemplatePath + 'dashboard-edit.html'
-                    });
-                    $scope.changeStructure = function(name, structure){
-                        $log.info('change structure to ' + name);
-                        changeStructure(model, structure);
-                    };
-                    editDashboardScope.closeDialog = function(){
-                        instance.close();
-                        editDashboardScope.$destroy();
-                    };
                 };
 
                 // add widget dialog
@@ -414,7 +357,7 @@ angular.module('dashboard')
                             type: widget,
                             config: createConfiguration(widget)
                         };
-                        addScope.model.rows[0].columns[0].widgets.unshift(w);
+                        addScope.model.widgets.unshift(w);
                         instance.close();
 
                         addScope.$destroy();
@@ -428,7 +371,7 @@ angular.module('dashboard')
             link: function ($scope, $element, $attr) {
                 // pass attributes to scope
                 $scope.name = $attr.name;
-                $scope.structure = $attr.structure;
+  //              $scope.structure = $attr.structure;
             },
             templateUrl: adfTemplatePath + 'dashboard.html'
         };

@@ -6,11 +6,31 @@
     <form role="form">
         <div class="form-group">
             <label for="dashboardTitle">Title</label>
-            <input type="text" class="form-control" id="dashboardTitle" ng-model="model.title" required="true">
+            <input type="text" class="form-control" name="dashboardTitle" ng-model="model.title" required="true">
         </div>
         <div class="form-group">
-            <label for="dashboardTitle">Id</label>
-            <input type="text" class="form-control" id="dashboardId" ng-model="model.id" required="true">
+            <label for="dashboardId">Id</label>
+            <input type="text" class="form-control" name="dashboardId" ng-model="model.id" required="true">
+        </div>
+        <div class="form-group">
+            <label for="dashboardMarginLeft">Margin Left</label>
+            <input type="text" class="form-control" name="name" ng-model="model.dashboardMarginLeft" required="true">
+        </div>
+        <div class="form-group">
+            <label for="dashboardMarginRight">Margin Right</label>
+            <input type="text" class="form-control" name="dashboardMarginRight" ng-model="model.dashboardMarginRight" required="true">
+        </div>
+        <div class="form-group">
+            <label for="dashboardColumns">Columns</label>
+            <input type="text" class="form-control" name="dashboardColumns" ng-model="model.dashboardColumns" required="true">
+        </div>
+        <div class="form-group">
+            <label for="dashboardRows">Rows</label>
+            <input type="text" class="form-control" name="dashboardRows" ng-model="model.dashboardRows" required="true">
+        </div>
+        <div class="form-group">
+            <label for="dashboardRowHeight">Row Height</label>
+            <input type="text" class="form-control" name="dashboardRows" ng-model="model.dashboardRowHeight" required="true">
         </div>
         <div class="form-group">
         <label>Dashboard Type</label>
@@ -20,16 +40,6 @@
                 dynamic modal style?
             </label>
         </div>
-        </div>
-       <div class="form-group">
-            <label>Structure</label>
-
-            <div class="radio" ng-repeat="(key, structure) in structures">
-                <label>
-                    <input type="radio" value="{{key}}" ng-model="model.structure"
-                           ng-change="changeStructure(key, structure)"> {{key}}
-                </label>
-            </div>
         </div>
     </form>
 </div>

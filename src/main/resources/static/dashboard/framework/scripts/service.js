@@ -223,24 +223,7 @@ angular.module('dashboard.service', []).
             {
                 title: "Dashboard 01",
                 id: "dashboard1",
-                structure: "4-8",
-                rows: [{
-                    columns: [
-                        {
-                            styleClass: "col-md-6",
-                            widgets: [
-                            ]
-                        },
-                        {
-                            styleClass: "col-md-6",
-                            widgets: [
-                            ]
-                        }
-
-                    ]
-                }
-
-                ]
+                widgets:[]
             }
 
         ];

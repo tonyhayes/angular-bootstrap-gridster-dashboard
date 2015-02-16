@@ -79,6 +79,7 @@ angular.module('dashboard.controllers', [])
         $scope.collapsible = false;
 
 
+
     })
     .controller('NavigationController', function ($scope, $location) {
 
@@ -168,13 +169,6 @@ angular.module('dashboard.controllers', [])
                         displayName: 'Title'
 
                     },
-                    {
-                        field: 'structure',
-                        headerCellTemplate: adfTemplatePath+'filterHeaderTemplate.html',
-                        width: '**',
-                        displayName: 'Structure'
-
-                    },
                     { field: '',
                         width: '40',
                         cellTemplate: adfTemplatePath+'cellTemplateButtonDelete.html'
@@ -218,7 +212,6 @@ angular.module('dashboard.controllers', [])
             // add new dashboard
             $scope.onDblClickRow = function (row) {
                 var editDashboardScope = $scope.$new();
-                editDashboardScope.structures = dashboard.structures;
                 var master = angular.copy($scope.model);
                 var dashboardId = dashboardService.getUniqueToken();
                 editDashboardScope.adminMode = true;
@@ -233,24 +226,7 @@ angular.module('dashboard.controllers', [])
                     $scope.model = {
                         title: "",
                         id: dashboardId,
-                        structure: "6-6",
-                        rows: [{
-                            columns: [
-                                {
-                                    styleClass: "col-md-6",
-                                    widgets: [
-                                    ]
-                                },
-                                {
-                                    styleClass: "col-md-6",
-                                    widgets: [
-                                    ]
-                                }
-
-                            ]
-                        }
-
-                        ]
+                        widgets:[]
                     };
                 }
 

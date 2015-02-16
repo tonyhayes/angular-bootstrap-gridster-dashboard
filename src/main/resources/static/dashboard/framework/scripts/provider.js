@@ -113,145 +113,145 @@ angular.module('dashboard.provider', [])
         var widgets = {};
 
 
-        var structures = {};
-        structures['6-6'] = {
-            rows: [
-                {
-                    columns: [
-                        {
-                            styleClass: 'col-md-6'
-                        },
-                        {
-                            styleClass: 'col-md-6'
-                        }
-                    ]
-                }
-            ]
-
-        };
-
-        structures['4-8'] = {
-            rows: [
-                {
-                    columns: [
-                        {
-                            styleClass: 'col-md-4',
-                            widgets: []
-                        },
-                        {
-                            styleClass: 'col-md-8',
-                            widgets: []
-                        }
-                    ]
-                }
-            ]
-        };
-
-        structures['12/4-4-4'] = {
-            rows: [
-                {
-                    columns: [
-                        {
-                            styleClass: 'col-md-12'
-                        }
-                    ]
-                },
-                {
-                    columns: [
-                        {
-                            styleClass: 'col-md-4'
-                        },
-                        {
-                            styleClass: 'col-md-4'
-                        },
-                        {
-                            styleClass: 'col-md-4'
-                        }
-                    ]
-                }
-            ]
-        };
-        structures['12/6-6'] = {
-            rows: [
-                {
-                    columns: [
-                        {
-                            styleClass: 'col-md-12'
-                        }
-                    ]
-                },
-                {
-                    columns: [
-                        {
-                            styleClass: 'col-md-6'
-                        },
-                        {
-                            styleClass: 'col-md-6'
-                        }
-                    ]
-                }
-            ]
-        };
-        structures['12/6-6/12'] = {
-            rows: [
-                {
-                    columns: [
-                        {
-                            styleClass: 'col-md-12'
-                        }
-                    ]
-                },
-                {
-                    columns: [
-                        {
-                            styleClass: 'col-md-6'
-                        },
-                        {
-                            styleClass: 'col-md-6'
-                        }
-                    ]
-                },
-                {
-                    columns: [
-                        {
-                            styleClass: 'col-md-12'
-                        }
-                    ]
-                }
-            ]
-        };
-
-        structures['6-6/12/6-6'] = {
-            rows: [
-                {
-                    columns: [
-                        {
-                            styleClass: 'col-md-6'
-                        },
-                        {
-                            styleClass: 'col-md-6'
-                        }
-                    ]
-                },
-                {
-                    columns: [
-                        {
-                            styleClass: 'col-md-12'
-                        }
-                    ]
-                },
-                {
-                    columns: [
-                        {
-                            styleClass: 'col-md-6'
-                        },
-                        {
-                            styleClass: 'col-md-6'
-                        }
-                    ]
-                }
-            ]
-        };
+        //var structures = {};
+        //structures['6-6'] = {
+        //    rows: [
+        //        {
+        //            columns: [
+        //                {
+        //                    styleClass: 'col-md-6'
+        //                },
+        //                {
+        //                    styleClass: 'col-md-6'
+        //                }
+        //            ]
+        //        }
+        //    ]
+        //
+        //};
+        //
+        //structures['4-8'] = {
+        //    rows: [
+        //        {
+        //            columns: [
+        //                {
+        //                    styleClass: 'col-md-4',
+        //                    widgets: []
+        //                },
+        //                {
+        //                    styleClass: 'col-md-8',
+        //                    widgets: []
+        //                }
+        //            ]
+        //        }
+        //    ]
+        //};
+        //
+        //structures['12/4-4-4'] = {
+        //    rows: [
+        //        {
+        //            columns: [
+        //                {
+        //                    styleClass: 'col-md-12'
+        //                }
+        //            ]
+        //        },
+        //        {
+        //            columns: [
+        //                {
+        //                    styleClass: 'col-md-4'
+        //                },
+        //                {
+        //                    styleClass: 'col-md-4'
+        //                },
+        //                {
+        //                    styleClass: 'col-md-4'
+        //                }
+        //            ]
+        //        }
+        //    ]
+        //};
+        //structures['12/6-6'] = {
+        //    rows: [
+        //        {
+        //            columns: [
+        //                {
+        //                    styleClass: 'col-md-12'
+        //                }
+        //            ]
+        //        },
+        //        {
+        //            columns: [
+        //                {
+        //                    styleClass: 'col-md-6'
+        //                },
+        //                {
+        //                    styleClass: 'col-md-6'
+        //                }
+        //            ]
+        //        }
+        //    ]
+        //};
+        //structures['12/6-6/12'] = {
+        //    rows: [
+        //        {
+        //            columns: [
+        //                {
+        //                    styleClass: 'col-md-12'
+        //                }
+        //            ]
+        //        },
+        //        {
+        //            columns: [
+        //                {
+        //                    styleClass: 'col-md-6'
+        //                },
+        //                {
+        //                    styleClass: 'col-md-6'
+        //                }
+        //            ]
+        //        },
+        //        {
+        //            columns: [
+        //                {
+        //                    styleClass: 'col-md-12'
+        //                }
+        //            ]
+        //        }
+        //    ]
+        //};
+        //
+        //structures['6-6/12/6-6'] = {
+        //    rows: [
+        //        {
+        //            columns: [
+        //                {
+        //                    styleClass: 'col-md-6'
+        //                },
+        //                {
+        //                    styleClass: 'col-md-6'
+        //                }
+        //            ]
+        //        },
+        //        {
+        //            columns: [
+        //                {
+        //                    styleClass: 'col-md-12'
+        //                }
+        //            ]
+        //        },
+        //        {
+        //            columns: [
+        //                {
+        //                    styleClass: 'col-md-6'
+        //                },
+        //                {
+        //                    styleClass: 'col-md-6'
+        //                }
+        //            ]
+        //        }
+        //    ]
+        //};
 
 
         var messageTemplate = '<div class="alert alert-danger">{}</div>';
@@ -339,14 +339,14 @@ angular.module('dashboard.provider', [])
          *
          * @returns {Object} self
          */
-        this.structure = function (name, structure) {
-            structures[name] = structure;
-            /*
-             because of the dynamic load of the applications modules, I lose the structure - save this in a service
-             */
-
-            return this;
-        };
+        //this.structure = function (name, structure) {
+        //    structures[name] = structure;
+        //    /*
+        //     because of the dynamic load of the applications modules, I lose the structure - save this in a service
+        //     */
+        //
+        //    return this;
+        //};
 
         /**
          * @ngdoc method
@@ -395,7 +395,7 @@ angular.module('dashboard.provider', [])
         this.$get = function () {
             return {
                 widgets: widgets,
-                structures: structures,
+ //               structures: structures,
                 messageTemplate: messageTemplate,
                 loadingTemplate: loadingTemplate
             };

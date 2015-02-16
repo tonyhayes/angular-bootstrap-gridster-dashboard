@@ -1,0 +1,27 @@
+
+<!-- collapse -->
+<a href="" title="collapse widget" ng-show="collapsible && !isCollapsed && !editMode" ng-click="isCollapsed = !isCollapsed">
+        <i class="box-button fa fa-minus"></i>
+</a>
+<!-- configure -->
+<a href="" title="configure widget" ng-show="editMode" ng-click="edit()">
+        <i class="box-button fa fa-edit"></i>
+</a>
+<!-- maximize -->
+<a href="" title="maximize widget" ng-show="collapsible && !isCollapsed && !editMode" ng-click="maximize()">
+        <i class="fa fa-arrows-alt"></i>
+</a>
+<!-- pop-out -->
+<a href="" ng-if="widget.popout" title="view more" ng-show="collapsible && !isCollapsed && !editMode && !popMode" ng-click="popout(widget.popout)">
+        <i class="fa fa-binoculars"></i>
+</a>
+<adf-widget-dynamic-link ng-if="!editMode" ng-repeat="item in config.content" content="item"></adf-widget-dynamic-link>
+        <adf-widget-content model="definition" content="widget" />
+<div  collapse="!isCollapsed">
+        <!-- expand -->
+        <a href="" title="expand widget" ng-show="collapsible && isCollapsed && !editMode" ng-click="isCollapsed = !isCollapsed">
+                <i class="fa fa-plus"></i>
+        </a>
+        {{definition.title}}
+
+</div>

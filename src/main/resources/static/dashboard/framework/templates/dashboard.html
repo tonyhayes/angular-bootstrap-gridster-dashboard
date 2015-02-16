@@ -18,14 +18,39 @@
         </span>
     </h1>
 
-    <div class="dashboard" x-ng-class="{'edit' : editMode}">
-        <div ng-repeat="row in model.rows" class="row" ng-class="row.styleClass">
-            <div ng-repeat="col in row.columns" class="column" ng-class="col.styleClass" ui-sortable="sortableOptions" ng-model="col.widgets">
-                <div class="widgets" ng-repeat="definition in col.widgets">
-                    <adf-widget definition="definition" column="col" edit-mode="{{editMode}}" pop-mode="{{popMode}}" collapsible="collapsible" />
-                </div>
-            </div>
-        </div>
+    <!--<div class="dashboard" x-ng-class="{'edit' : editMode}">-->
+        <!--<div ng-repeat="row in model.rows" class="row" ng-class="row.styleClass">-->
+            <!--<div ng-repeat="col in row.columns" class="column" ng-class="col.styleClass" ui-sortable="sortableOptions" ng-model="col.widgets">-->
+                <!--<div class="widgets" ng-repeat="definition in col.widgets">-->
+                    <!--<adf-widget definition="definition" column="col" edit-mode="{{editMode}}" pop-mode="{{popMode}}" collapsible="collapsible" />-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div gridster="gridsterOptions">-->
+        <!--<ul>-->
+            <!--<li gridster-item="widget" ng-repeat="widget in dashboardz.widgets">-->
+                <!--<div class="box" >-->
+                    <!--<div class="box-header">-->
+                        <!--<h3>{{ widget.name }}</h3>-->
+                        <!--<div class="box-header-btns pull-right">-->
+                            <!--<a title="settings" ng-click="openSettings(widget)"><i class="glyphicon glyphicon-cog"></i></a>-->
+                            <!--<a title="Remove widget" ng-click="remove(widget)"><i class="glyphicon glyphicon-trash"></i></a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="box-content">-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <div gridster="gridsterOptions">
+        <ul>
+            <li gridster-item="widget.config" class="box" ng-repeat="widget in model.widgets">
+                    <adf-widget definition="widget"  edit-mode="{{editMode}}" pop-mode="{{popMode}}" collapsible="collapsible" />
+            </li>
+        </ul>
     </div>
 
 </div>

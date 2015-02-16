@@ -29,7 +29,7 @@ angular.module('dashboard', [
     'dashboard.service',
     'dashboard.controllers',
     'ui.bootstrap',
-    'ui.sortable',
+    'gridster',
     'ngAnimate',
     'LocalStorageModule',
     'ngRoute',
